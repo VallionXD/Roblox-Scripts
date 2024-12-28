@@ -13,35 +13,14 @@ Section:NewButton("Marker ESP with Box and Names", "Show boxes around markers an
         if string.find(v.Name, "Marker") and v:IsA("Model") then
             local part = v:FindFirstChildWhichIsA("Part")
             if part then
-                local billboardGui = Instance.new("BillboardGui")
-                billboardGui.Parent = part
-                billboardGui.Adornee = part
-                billboardGui.Size = UDim2.new(0, 200, 0, 50)
-                billboardGui.StudsOffset = Vector3.new(0, 5, 0)
-
-                local textLabel = Instance.new("TextLabel")
-                textLabel.Parent = billboardGui
-                textLabel.Size = UDim2.new(1, 0, 1, 0)
-                textLabel.BackgroundTransparency = 1
-                textLabel.Text = v.Name
-                textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-                textLabel.TextSize = 14
-                textLabel.TextStrokeTransparency = 0.8
-                textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-                textLabel.TextAlignment = Enum.TextAlignment.Center
-
-                local surfaceGui = Instance.new("SurfaceGui")
-                surfaceGui.Parent = part
-                surfaceGui.Face = Enum.NormalId.Front
-                surfaceGui.AlwaysOnTop = true
-
-                local frame = Instance.new("Frame")
-                frame.Parent = surfaceGui
-                frame.Size = UDim2.new(1, 0, 1, 0)
-                frame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-                frame.BorderSizePixel = 2
-                frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                frame.BackgroundTransparency = 0.5
+                -- esp fix
+                local highlight = Instance.new("Highlight")
+                highlight.Parent = part  -- Attach the highlight to the part
+                highlight.Adornee = part  -- Set the adornee to the part so it highlights
+                highlight.FillColor = Color3.fromRGB(255, 0, 0)  -- Set the highlight fill color (red)
+                highlight.OutlineColor = Color3.fromRGB(255, 255, 0)  -- Set the outline color (yellow)
+                highlight.FillTransparency = 0.5  -- Set fill transparency to make it semi-transparent
+                highlight.OutlineTransparency = 0.3  -- Set outline transparency
             end
         end
     end
